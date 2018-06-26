@@ -1,0 +1,53 @@
+ /* Algorithm take as input full name of user
+   and return initials in upper case */
+  
+
+#include <stdio.h>
+#include <cs50.h>
+#include <string.h>
+// cs50 library used for get_string function
+
+int main(void)
+{
+    // get name from user and save to string
+    printf("Provide your name:\n");
+    string s = get_string();
+
+    /* check if 'space' was added before name
+       if no, print first letter from string and make it upper if needed
+       if yes, skip this step */
+    if (s[0] != ' ')
+    {
+        if (s[0] >= 'a' && s[0] <= 'z')
+        {
+            printf("%c", s[0] - ('a' - 'A'));
+        }
+        else
+        {
+            printf("%c", s[0]);
+        }
+    }
+    // find spaces after names and print initial letter which are follow after.
+    for (int i = 0, n = strlen(s); i < n; i++)
+    {
+        while (s[i] == ' ')
+        {
+            do
+            {
+                i++;
+            }
+
+            while (s[i] == ' '); 
+
+            if (s[i] >= 'a' && s[i] <= 'z')
+            {
+                printf("%c", s[i] - ('a' - 'A'));
+            }
+            else
+            {
+                printf("%c", s[i]);
+            }
+        }
+    }
+    printf("\n");
+}
