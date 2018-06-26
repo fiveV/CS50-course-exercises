@@ -1,0 +1,44 @@
+/* realising of Caeser cipher on C. 
+Crypting key is given as argument in command line */
+
+#include <stdio.h>
+#include <cs50.h>
+#include <string.h>
+#include <stdlib.h>
+
+int main(int argc, string argv[])
+{
+    if (argc != 2) //Checking, if commandline argument provided. If not, stop program executing.
+    {
+        printf("Error\n");
+        return 1;
+    }
+    else
+    {
+        printf("Provide text for crypting:");
+        string s = get_string();
+
+        int k = atoi(argv[1]) % 26; // Initialize key for cipher
+
+        printf("ciphertext: ");
+
+        for ( int i = 0, n = strlen(s); i < n; i++) // Iteration of each char in crypting string
+        {
+            if ((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z')) //If char is not a letter - skip it.
+            {
+                int j = s[i] + k; //Crypting
+
+                while (( j > 'Z' && j < 'a') || j > 'z') // Letter can be replaced only with letter.
+                j = j - 26;
+
+                printf("%c", j);
+            }
+            else
+            {
+                printf("%c", s[i]);
+            }
+        }
+    printf("\n");
+    return 0;
+    }
+}
