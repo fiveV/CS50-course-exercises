@@ -5,6 +5,7 @@ Crypting key is given as argument in command line */
 #include <cs50.h>
 #include <string.h>
 #include <stdlib.h>
+// cs50 library used for get_string function
 
 int main(int argc, string argv[])
 {
